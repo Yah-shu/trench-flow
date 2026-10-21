@@ -62,6 +62,22 @@ if (await alreadyRunning()) {
 const ffmpeg = findFfmpeg(process.env, APP_DIR)
 if (ffmpeg) process.env.FFMPEG_PATH = ffmpeg
 
+// First start without the Claude Code CLI: begin at AI level Off (free, no errors) instead of Medium. Once Claude is
+// installed the user picks a level in Settings; a level they saved is never changed here.
+{
+  const { claudeBin } = await import('./day/host.ts')
+  const { readJson, writeJson, dayRoot } = await import('./day/store.ts')
+  const file = join(dayRoot(), 'config.json')
+  const saved = readJson<Record<string, unknown>>(file, {})
+  // claudeBin() already looked in PATH and the install places; the bare name back means none was found
+  const noClaude = claudeBin() === 'claude'
+  if (saved.aiLevel === undefined && noClaude) {
+    mkdirSync(dayRoot(), { recursive: true })
+    writeJson(file, { ...saved, aiLevel: 'off' })
+    console.log('Claude Code is not installed: the AI level starts at Off (free). Install Claude Code and pick a level in Settings to turn it on.')
+  }
+}
+
 // Imported after the environment is set up: importing the routes starts the Day scheduler.
 const { createApp } = await import('./app.ts')
 const app = createApp({ port: PORT, webPort: WEB_PORT })

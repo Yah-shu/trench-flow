@@ -73,7 +73,7 @@ desktop on Windows, `~/Applications` on macOS) and opens it.
   - Windows: `irm https://claude.ai/install.ps1 | iex`, then run `claude`
   - macOS: `curl -fsSL https://claude.ai/install.sh | bash`, then run `claude`
 
-  Then pick an AI level in trench-flow's **Settings**. Without Claude Code, leave it on **Off**; the app works fully.
+  Then pick an AI level in trench-flow's **Settings**. Without Claude Code it starts on **Off** by itself; the app works fully.
 
 ---
 
