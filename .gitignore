@@ -1,0 +1,17 @@
+# Dependencies and builds
+node_modules
+dist
+*.log
+
+# Settings with your own values
+.env
+.env.local
+
+# Your data lives outside this folder (~/.trench-flow), but just in case
+.trench-flow/
+config.json
+
+# Editors and OS
+.vscode/*
+.idea
+.DS_Store

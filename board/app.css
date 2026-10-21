@@ -1,0 +1,74 @@
+/*
+  trench-flow's own bits on top of the Plinth look (theme/plinth.css): a small reset, and the field classes the Day
+  page uses (studio-input, studio-select) in Plinth's field style.
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+img,
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.studio-input,
+.studio-select {
+  padding: 0.6rem 0.75rem;
+  background: var(--pl-canvas);
+  border: 2px solid var(--pl-ink);
+  border-radius: 10px;
+  color: var(--pl-ink);
+  font-size: 14px;
+  box-shadow: none;
+}
+
+textarea.studio-input {
+  border-radius: var(--pl-radius);
+}
+
+:is(.studio-input, .studio-select):hover:not(:disabled) {
+  background: var(--pl-paper);
+}
+
+:is(.studio-input, .studio-select):focus {
+  background: var(--pl-canvas);
+  box-shadow: 0 0 0 3px var(--pl-coral);
+  outline: none;
+}
+
+:is(.studio-input, .studio-select)[aria-invalid='true'] {
+  border-color: var(--pl-bad);
+}
+
+:is(.studio-input, .studio-select):disabled {
+  opacity: 0.55;
+}
+
+.studio-select option {
+  background: var(--pl-canvas);
+  color: var(--pl-ink);
+}
+
+::placeholder {
+  color: var(--pl-mute);
+  opacity: 1;
+}
