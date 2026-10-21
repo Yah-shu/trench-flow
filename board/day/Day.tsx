@@ -375,7 +375,7 @@ function SummaryPanel({ day, sample, onRefreshed }: { day: DaySummary; sample: b
           ) : status === 'error' ? (
             <p className="day-muted">The summary didn’t work this time. Press Refresh to try again.</p>
           ) : (
-            <p className="day-muted">The summary is written when your day ends (or press Refresh). Cards get AI titles every couple of hours.</p>
+            <p className="day-muted">The summary is written when your day ends (or press Refresh). Cards get AI titles through the day, as often as the AI level in Settings says.</p>
           )}
           {note && <p className="day-note">{note}</p>}
           {s && day.summaryUpdatedAt && <p className="day-muted day-summary__when">Written {fmtClock(day.summaryUpdatedAt)}</p>}
